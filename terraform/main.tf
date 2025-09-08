@@ -1,10 +1,10 @@
 provider "google" {
-  project = "curso-iac-devops"    
+  project = "projeto-iac-471022"    
   region  = "us-central1"
 }
 
 resource "google_storage_bucket" "meu_bucket" {
-  name     = "bucket-iac-mari"
+  name     = "bucket-panqueca"
   location = "US"
 }
 
