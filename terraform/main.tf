@@ -1,20 +1,14 @@
-resource "google_compute_instance" "default" {
-  name         = var.instance_name
-  machine_type = "e2-micro"
-  zone         = var.zone
+provider "google" {
+  project = "projeto-iac-471022"    
+  region  = "us-central1"
+}
 
-  boot_disk {
-    initialize_params {
-      image = "debian-cloud/debian-11"
-    }
-  }
+resource "google_storage_bucket" "meu_bucket" {
+  name     = "bucket-tfstate-iac-mari"
+  force_destroy = true
+  location = "US"
+}
 
-  network_interface {
-    network = "default"
-    access_config {}
-  }
-
-  metadata = {
-    ssh-keys = "usuario:ssh-rsa AAAA..."
-  }
+resource "random_id" "sufixo" {
+  byte_length = 4
 }
